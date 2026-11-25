@@ -1,0 +1,11 @@
+name: warranty
+version: "1.0.0"
+profile: warranty
+model-paths: ["models"]
+test-paths: ["tests"]
+models:
+  warranty:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

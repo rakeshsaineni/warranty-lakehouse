@@ -1,0 +1,71 @@
+{
+ "events_delivered": 12319,
+ "unique_events": 11951,
+ "duplicates": 368,
+ "bronze_plus_silver_seconds": 0.395,
+ "events_per_second": 31199,
+ "silver_vs_source": {
+  "claims": {
+   "source_rows": 5806,
+   "silver_rows": 5806,
+   "missing": 0,
+   "unexpected": 0
+  },
+  "vehicles": {
+   "source_rows": 3000,
+   "silver_rows": 3000,
+   "missing": 0,
+   "unexpected": 0
+  },
+  "dealers (current SCD2 row)": {
+   "source_rows": 40,
+   "silver_rows": 40,
+   "missing": 0,
+   "unexpected": 0
+  }
+ },
+ "naive_consumer": {
+  "normal_delivery": {
+   "stale_claims": 1,
+   "deleted_claims_still_present": 0
+  },
+  "after_replay": {
+   "stale_claims": 237,
+   "deleted_claims_still_present": 29
+  }
+ },
+ "lsn_pipeline_after_replay": {
+  "claims": {
+   "source_rows": 5806,
+   "silver_rows": 5806,
+   "missing": 0,
+   "unexpected": 0
+  },
+  "vehicles": {
+   "source_rows": 3000,
+   "silver_rows": 3000,
+   "missing": 0,
+   "unexpected": 0
+  },
+  "dealers (current SCD2 row)": {
+   "source_rows": 40,
+   "silver_rows": 40,
+   "missing": 0,
+   "unexpected": 0
+  }
+ },
+ "quarantine": {
+  "corrupted_events": 40,
+  "quarantined": 40,
+  "wrong_type_amount": 16,
+  "unknown_status": 24
+ },
+ "reconciliation": {
+  "months": 7,
+  "all_match": true
+ },
+ "landed": {
+  "landed": 12319,
+  "quarantined": 0
+ }
+}

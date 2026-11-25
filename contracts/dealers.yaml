@@ -1,0 +1,7 @@
+table: dealers
+primary_key: dealer_id
+version: 1
+columns:
+  dealer_id: {type: string, required: true}
+  name:      {type: string, required: true}
+  region:    {type: string, required: true}

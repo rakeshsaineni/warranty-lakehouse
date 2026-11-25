@@ -1,0 +1,14 @@
+# Data contract for the claims CDC stream. Version 2 added labor_hours (nullable, so the
+# change is backward compatible: older events simply don't have it).
+table: claims
+primary_key: claim_id
+version: 2
+columns:
+  claim_id:   {type: string, required: true}
+  vin:        {type: string, required: true}
+  dealer_id:  {type: string, required: true}
+  component:  {type: string, required: true}
+  status:     {type: string, required: true, allowed: [submitted, approved, paid]}
+  amount:     {type: number, required: true, min: 0}
+  claim_date: {type: date, required: true}
+  labor_hours: {type: number, required: false, min: 0}

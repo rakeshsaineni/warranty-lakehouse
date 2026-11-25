@@ -1,0 +1,9 @@
+version: 2
+sources:
+  - name: silver
+    schema: main
+    description: Current-state and SCD2 tables built from the CDC stream by lakehouse.pipeline
+    tables:
+      - name: claims
+      - name: vehicles
+      - name: dealers_history

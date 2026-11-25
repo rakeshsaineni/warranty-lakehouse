@@ -1,0 +1,28 @@
+version: 2
+models:
+  - name: stg_claims
+    columns:
+      - name: claim_id
+        tests: [unique, not_null]
+      - name: status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["submitted", "approved", "paid"]
+  - name: fct_claims
+    description: One row per claim with point-in-time dealer region
+    columns:
+      - name: claim_id
+        tests: [unique, not_null]
+      - name: vin
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_vehicles')
+                field: vin
+      - name: dealer_region_at_claim
+        tests: [not_null]
+  - name: agg_claims_monthly
+    columns:
+      - name: claims_per_1k
+        tests: [not_null]

@@ -1,0 +1,28 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-java@v4  # Spark parity test
+        with:
+          distribution: temurin
+          java-version: "17"
+      - run: pip install -e ".[dev,dbt,spark]"
+      - run: ruff check src tests dags
+      - name: Tests (CDC correctness, replay, contracts, SCD2, reconciliation, Spark parity, DAG wiring)
+        run: pytest
+      - name: End-to-end gate (silver must equal the source system exactly)
+        run: lakehouse run
+      - name: dbt build (5 models, 11 tests)
+        working-directory: dbt
+        run: LAKEHOUSE_DB=../data/warehouse.duckdb dbt build --profiles-dir .

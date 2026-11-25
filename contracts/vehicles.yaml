@@ -1,0 +1,8 @@
+table: vehicles
+primary_key: vin
+version: 1
+columns:
+  vin:             {type: string, required: true}
+  model:           {type: string, required: true}
+  model_year:      {type: integer, required: true}
+  in_service_date: {type: date, required: true}
